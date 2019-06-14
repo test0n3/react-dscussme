@@ -1,6 +1,6 @@
 const LocalStorage = {
   saveUser: userData => {
-    const exist = this.existUser();
+    const exist = false;
     if (!exist) {
       localStorage.setItem("user", JSON.stringify(userData));
       console.log("userData saved");

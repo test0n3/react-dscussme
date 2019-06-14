@@ -61,7 +61,7 @@ function Login({ placeholder, saveUser }) {
               justifyContent: "center"
             }}
           />
-          <label> User</label>
+          <label htmlFor= "User"</label>
           <input
             css={{ ...styles }}
             id="user"
@@ -73,7 +73,7 @@ function Login({ placeholder, saveUser }) {
             value={username}
           />
           <br />
-          <label>Email</label>
+          <label htmlFor="Email"</label>
           <input
             css={{ ...styles }}
             id="email"

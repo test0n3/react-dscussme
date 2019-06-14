@@ -53,7 +53,7 @@ function Login({ placeholder, saveUser }) {
             // alignItems: "flex-start"
           }}
         >
-          <label htmlFor= "User"</label>
+          <label htmlFor="user">Username</label>
           <input
             css={{ ...styles }}
             id="user"
@@ -65,7 +65,7 @@ function Login({ placeholder, saveUser }) {
             value={username}
           />
           <br />
-          <label htmlFor="Email"</label>
+          <label htmlFor="email">Email</label>
           <input
             css={{ ...styles }}
             id="email"

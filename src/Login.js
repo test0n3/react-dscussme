@@ -53,14 +53,6 @@ function Login({ placeholder, saveUser }) {
             // alignItems: "flex-start"
           }}
         >
-          <label
-            css={{
-              margin: 0,
-              fontWeight: "500",
-              textAlign: "center",
-              justifyContent: "center"
-            }}
-          />
           <label htmlFor= "User"</label>
           <input
             css={{ ...styles }}

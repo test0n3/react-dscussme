@@ -103,7 +103,8 @@
         color: #333333;
       }
 
-      main article {
+      main .discussion,
+      main .comment {
         font-size: 1.2em;
         border: 1px solid #666666;
         border-radius: 10px;
@@ -111,8 +112,11 @@
         padding: 0 10px;
       }
 
-      main section,
-      main a {
+      main .comment {
+        margin-left: 40px;
+      }
+
+      main section {
         display: flex;
         flex-direction: row;
         margin: 0;
@@ -122,27 +126,39 @@
       main section:first-child {
         justify-content: start;
       }
+
+      main section:first-child p {
+        min-width: 80%;
+      }
+
       main section:last-child {
         font-size: 0.6em;
         justify-content: end;
       }
 
       main section:last-child p {
-        margin: 10px;
+        margin: 5px;
       }
+
+      .comments,
+      .author,
+      .time {
+        width: 150px;
+      }
+
+      .author {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
       main #newDiscussion {
+        background: #673ab7 no-repeat center/60% url("../assets/pencil.svg");
         width: 50px;
         height: 50px;
         position: fixed;
         bottom: 80px;
         right: 10px;
-      }
-
-      #newDiscussion img {
-        background-color: #673ab7;
-        width: 30px;
-        height: 30px;
-        padding: 10px;
         border-radius: 50%;
       }
 
@@ -185,11 +201,7 @@
         <h1><a href="#">DSCUSSME</a></h1>
       </div>
       <div>
-        <a href=""
-          ><img src="../assets/avatar.jpg" alt="user avatar" />
-
-          <!-- Username ammount of characters is limited, we'll display only 150px -->
-        </a>
+        <a href=""><img src="../assets/avatar.jpg" alt="user avatar" /> </a>
         <ul>
           <li><a href="#">WWWWWWWWWWWW</a></li>
           <li><a href="#">Logout</a></li>
@@ -197,7 +209,7 @@
       </div>
     </header>
     <main>
-      <article>
+      <article class="discussion">
         <section>
           <a href="#">
             <p>
@@ -207,12 +219,28 @@
           </a>
         </section>
         <section>
-          <p>Discuss: 5</p>
-          <p>by <a href="#">WWWWWWWWWWWW</a></p>
-          <p>Today, 23:59:59 hrs</p>
+          <p class="comments">Discuss: 5</p>
+          <p class="author">by <a href="#">WWWWWWWWWWWW</a></p>
+          <p class="time">Today, 23:59:59 hrs</p>
         </section>
       </article>
-      <article>
+      <article class="comment">
+        <section>
+          <a href="#">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo
+              quisquam ex omnis sapiente sunt distinctio quidem at quae, nisi
+              labore? Sunt architecto deserunt doloremque earum placeat quidem
+              aliquid quae voluptas?
+            </p>
+          </a>
+        </section>
+        <section>
+          <p class="author">by <a href="#">WWWWWWWWWWWW</a></p>
+          <p class="time">Today, 23:59:59 hrs</p>
+        </section>
+      </article>
+      <article class="discussion">
         <section>
           <a href="#">
             <p>
@@ -222,12 +250,12 @@
           </a>
         </section>
         <section>
-          <p>Discuss: 5</p>
-          <p>by <a href="#">WWWWWWWWWWWW</a></p>
-          <p>Yesterday, 23:59:59 hrs</p>
+          <p class="comments">Discuss: 5</p>
+          <p class="author">by <a href="#">WWWWWWWWWWWW</a></p>
+          <p class="time">Yesterday, 23:59:59 hrs</p>
         </section>
       </article>
-      <article>
+      <article class="discussion">
         <section>
           <a href="#">
             <p>
@@ -236,15 +264,12 @@
           </a>
         </section>
         <section>
-          <p>Discuss: 5</p>
-          <p>by <a href="#">WWWWWWWWWWWW</a></p>
-          <p>September 15th 2017, 23:59:59 hrs</p>
+          <p class="comments">Discuss: 5</p>
+          <p class="author">by <a href="#">WWWWWWWWWWWW</a></p>
+          <p class="time">September 15th 2017, 23:59:59 hrs</p>
         </section>
       </article>
-      <div id="newDiscussion">
-        <!-- ✎ -->
-        <img src="../assets/pencil.svg" alt="" />
-      </div>
+      <div id="newDiscussion"></div>
     </main>
     <footer>
       <p>&copy; 2019 DSCUSSME by <a href="#">dscussme development group</a></p>

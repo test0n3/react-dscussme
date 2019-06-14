@@ -1,31 +1,23 @@
+/** @jsx jsx */
 import React from "react";
-import VisuallyHidden from "@reach/visually-hidden";
-import CommentForm from "./CommentForm";
+import ButtonCreateComment from "./ButtonCreateComment";
+import { jsx } from "@emotion/core";
 
-function Comment() {
-  const [showDialog, setShowDialog] = React.useState(false);
+function Comment({ comment }) {
+  const styledChildComment = {
+    marginLeft: "50px"
+  };
 
-  function handleDialogOff() {
-    setShowDialog(false);
-  }
-
-  function handleDialogOn() {
-    setShowDialog(true);
-  }
+  const styledComment = {
+    marginLeft: "0px"
+  };
 
   return (
-    <div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus aperiam
-        impedit aspernatur incidunt veritatis non nisi deserunt, nobis sint
-        officia sed illum voluptas ipsam quidem, explicabo cum rerum rem
-        molestiae!
-      </p>
-      <button onClick={handleDialogOn}>
-        <VisuallyHidden>Create</VisuallyHidden>
-        <span aria-hidden>+</span>
-      </button>
-      <CommentForm showDialog={showDialog} handleDialogOff={handleDialogOff} />
+    <div css={comment.parentId ? styledChildComment : styledComment}>
+      <p>{comment.body}</p>
+      <p>{comment.author}</p>
+      <p>{comment.date}</p>
+      {!comment.parentId && <ButtonCreateComment />}
     </div>
   );
 }

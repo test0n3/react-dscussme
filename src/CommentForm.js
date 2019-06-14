@@ -16,8 +16,8 @@ function CommentForm({ showDialog, handleDialogOff }) {
     border: "none",
     cursor: "pointer",
     borderRadius: "50%",
-    width: "50px",
-    height: "50px",
+    width: "calc(1.4em + 1vw)",
+    height: "calc(1.4em + 1vw)",
     fontSize: "calc(1.4em + 1vw)",
     alignSelf: "flex-end"
   };
@@ -31,7 +31,9 @@ function CommentForm({ showDialog, handleDialogOff }) {
     border: "solid 1px gray",
     borderRadius: "10px",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    height: "65vh",
+    justifyContent: "space-around"
   };
 
   const styledForm = {
@@ -52,11 +54,10 @@ function CommentForm({ showDialog, handleDialogOff }) {
     border: "none",
     cursor: "pointer",
     borderRadius: "15px",
-    width: "45%",
-    height: "50px",
     fontSize: "calc(1em + 1vw)",
     alignSelf: "center",
-    margin: "10px 0"
+    margin: "10px 0",
+    padding: "3%"
   };
 
   return (

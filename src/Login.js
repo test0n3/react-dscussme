@@ -2,28 +2,34 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 
-function Login({ label, placeholder, saveUser, emailUser }) {
-  const [currentUser, setCurrentUser] = React.useState("");
-  // const [currentEmailUser, setEmailUser] = React.useState("");
+const styles = {
+  boxShadow: "2px 4px 24px 0 rgba(0, 0, 0, 0.15)"
+};
+function Login({ placeholder, saveUser }) {
+  const [username, setUsername] = React.useState("");
+  const [email, setEmail] = React.useState("");
 
-  function setUser(event) {
-    event.preventDefault();
-    saveUser(currentUser);
-    setCurrentUser("");
-  }
+  // function setUser(event) {
+  //   event.preventDefault();
+  //   saveUser(currentUser);
+  //   setCurrentUser("");
+
+  // }
 
   function onChangeInputUser(event) {
-    setCurrentUser(event.currentTarget.user);
+    setUsername(event.target.value);
   }
-  // function setEmailUser(event) {
-  //   event.preventDefault();
-  //   emailUser(emailUser);
-  //   setemailUser("");
-  // }
 
-  // function onChangeInputEmailUser(event) {
-  //   setemailUser(event.currentTarget.emailuser);
-  // }
+  function onChangeInputEmail(event) {
+    setEmail(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    console.log(username);
+    console.log(email);
+  }
+
   return (
     <div
       css={{
@@ -35,14 +41,14 @@ function Login({ label, placeholder, saveUser, emailUser }) {
     >
       <div css={{ width: "100%" }}>
         <form
-          onSubmit={setUser}
+          onSubmit={handleSubmit}
           css={{
+            ...styles,
             backgroundColor: "#fff",
             width: "100%",
             padding: "24px",
             borderRadius: "8px",
             color: "#000",
-            boxShadow: "2px 4px 24px 0 rgba(0, 0, 0, 0.15)",
             boxSizing: "border-box",
             fontSize: "18px",
             margin: "auto",
@@ -61,29 +67,33 @@ function Login({ label, placeholder, saveUser, emailUser }) {
             }}
           />
           <label> User</label>
-          {/* const boxShadow={"2px 4px 24px 0 rgba(0, 0, 0, 0.15)"} */}
           <input
-            css={{ boxShadow: "2px 4px 24px 0 rgba(0, 0, 0, 0.15)" }}
+            css={{ ...styles }}
             id="user"
             required="required"
-            autocomplete="off"
+            autoComplete="off"
             user="user"
             placeholder={placeholder}
             onChange={onChangeInputUser}
-            value={currentUser}
+            value={username}
           />
           <br />
           <label>Email</label>
           <input
-            css={{ boxShadow: "2px 4px 24px 0 rgba(0, 0, 0, 0.15)" }}
+            css={{ ...styles }}
             id="email"
             required="required"
-            autocomplete="off"
-            emailUser="email"
+            autoComplete="off"
+            type="email"
             placeholder={placeholder}
+            onChange={onChangeInputEmail}
+            value={email}
           />
           <br />
-          <button css={{ marginTop: 30, alignSelf: "flex-end"  }} type="submit">
+          <button
+            css={{ ...styles, marginTop: 30, alignSelf: "flex-end" }}
+            type="submit"
+          >
             Login
           </button>
         </form>
@@ -93,6 +103,3 @@ function Login({ label, placeholder, saveUser, emailUser }) {
 }
 
 export default Login;
-//  puedo hacer const de css dentro del componente 
-// email user show logic
-//

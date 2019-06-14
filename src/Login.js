@@ -1,6 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import LocalStorage from "./helpers/Localstorage";
 
 const styles = {
   boxShadow: "2px 4px 24px 0 rgba(0, 0, 0, 0.15)"
@@ -8,13 +9,6 @@ const styles = {
 function Login({ placeholder, saveUser }) {
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
-
-  // function setUser(event) {
-  //   event.preventDefault();
-  //   saveUser(currentUser);
-  //   setCurrentUser("");
-
-  // }
 
   function onChangeInputUser(event) {
     setUsername(event.target.value);
@@ -28,6 +22,7 @@ function Login({ placeholder, saveUser }) {
     event.preventDefault();
     console.log(username);
     console.log(email);
+    LocalStorage.saveUser({ username, email });
   }
 
   return (

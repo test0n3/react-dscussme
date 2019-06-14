@@ -16,6 +16,9 @@
       }
 
       header {
+        position: fixed;
+        top: 0;
+        left: 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -24,16 +27,21 @@
         align-items: center;
         box-shadow: 5px 0 5px #000000;
         height: 50px;
-        position: relative;
+        width: 100%;
+        /* position: relative; */
       }
 
-      header div:first-child,
-      div:last-child a {
+      header div:first-child {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
         width: 220px;
+      }
+
+      header div:last-child {
+        position: relative;
+        padding-right: 20px;
       }
 
       header a {
@@ -63,22 +71,31 @@
       }
 
       header ul {
-        display: none;
+        /* display: none; */
         margin: 0;
         padding: 0;
         border: 1px solid #999999;
         position: absolute;
+        right: 0;
+        list-style: none;
+      }
+
+      header li {
+        padding: 10px;
+        background-color: #ffffff;
+        border-bottom: 1px solid #999999;
+      }
+
+      header li:last-child {
+        border: 0;
       }
 
       header ul li > a {
         color: #333333;
-        padding: 10px;
       }
 
-      main section {
-        /* border: 1px solid #000; */
-        background-color: yellow;
-        padding: 2em;
+      main {
+        margin-top: 50px;
       }
 
       main a {
@@ -86,41 +103,77 @@
         color: #333333;
       }
 
-      main a article {
-        display: grid;
-        grid-template-columns: 10px 10px 700px 200px;
-        grid-template-rows: auto 20px;
-        grid-template-areas:
-          "first . second second"
-          ". . third fourth";
+      main article {
         font-size: 1.2em;
+        border: 1px solid #666666;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 0 10px;
       }
 
-      main a article:last-child {
-        border: none;
-      }
-
-      main article p {
+      main section,
+      main a {
+        display: flex;
+        flex-direction: row;
         margin: 0;
         padding: 0;
       }
 
-      main article p:first-child {
-        grid-area: first;
+      main section:first-child {
+        justify-content: start;
       }
-
-      main article p:nth-child(2) {
-        grid-area: second;
-      }
-
-      main article p:nth-last-child(2) {
-        grid-area: third;
+      main section:last-child {
         font-size: 0.6em;
+        justify-content: end;
       }
 
-      main article p:nth-last-child(1) {
-        grid-area: fourth;
-        font-size: 0.6em;
+      main section:last-child p {
+        margin: 10px;
+      }
+      main #newDiscussion {
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        bottom: 80px;
+        right: 10px;
+      }
+
+      #newDiscussion img {
+        background-color: #673ab7;
+        width: 30px;
+        height: 30px;
+        padding: 10px;
+        border-radius: 50%;
+      }
+
+      footer {
+        background-color: #673ab7;
+        color: #ffffff;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      footer p {
+        margin: 0;
+        padding: 5px 0;
+        font-size: 0.8em;
+        line-height: 1.5;
+      }
+
+      footer a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      footer p img {
+        height: 20px;
+        margin: 0 5px;
       }
     </style>
     <title>..::DSCUSSME::..</title>
@@ -134,49 +187,74 @@
       <div>
         <a href=""
           ><img src="../assets/avatar.jpg" alt="user avatar" />
-          <p>WWWWWWWWWWWW</p>
+
           <!-- Username ammount of characters is limited, we'll display only 150px -->
         </a>
         <ul>
+          <li><a href="#">WWWWWWWWWWWW</a></li>
           <li><a href="#">Logout</a></li>
         </ul>
       </div>
     </header>
     <main>
-      <section>
-        <a href="#">
-          <article>
-            <p>§</p>
+      <article>
+        <section>
+          <a href="#">
             <p>
               This is the text for a long title for an article that no one wnats
               to read, as we don't usually read. We are a bunch of jerks.
             </p>
-            <p>by WWWWWWWWWWWW</p>
-            <p>Today, 23:59:59 hrs</p>
-          </article>
-        </a>
-        <a href="#">
-          <article>
-            <p>§</p>
+          </a>
+        </section>
+        <section>
+          <p>Discuss: 5</p>
+          <p>by <a href="#">WWWWWWWWWWWW</a></p>
+          <p>Today, 23:59:59 hrs</p>
+        </section>
+      </article>
+      <article>
+        <section>
+          <a href="#">
             <p>
               This is the text for a long title for an article that no one wnats
               to read, as we don't usually read. We are a bunch of jerks.
             </p>
-            <p>WWWWWWWWWWWW</p>
-            <p>Yesterday, 23:59:59 hrs</p>
-          </article>
-        </a>
-        <a href="#">
-          <article>
-            <p>§</p>
+          </a>
+        </section>
+        <section>
+          <p>Discuss: 5</p>
+          <p>by <a href="#">WWWWWWWWWWWW</a></p>
+          <p>Yesterday, 23:59:59 hrs</p>
+        </section>
+      </article>
+      <article>
+        <section>
+          <a href="#">
             <p>
               A small title for some article, written by some know-it-all jerk.
             </p>
-            <p>WWWWWWWWWWWW</p>
-            <p>September 15th 2017, 23:59:59 hrs</p>
-          </article>
-        </a>
-      </section>
+          </a>
+        </section>
+        <section>
+          <p>Discuss: 5</p>
+          <p>by <a href="#">WWWWWWWWWWWW</a></p>
+          <p>September 15th 2017, 23:59:59 hrs</p>
+        </section>
+      </article>
+      <div id="newDiscussion">
+        <!-- ✎ -->
+        <img src="../assets/pencil.svg" alt="" />
+      </div>
     </main>
+    <footer>
+      <p>&copy; 2019 DSCUSSME by <a href="#">dscussme development group</a></p>
+      <p>
+        <a href="#"
+          ><img src="../assets/facebook-logo.svg" alt="Facebook link"
+        /></a>
+        <a href="#"><img src="../assets/twitter.svg" alt="twitter link"/></a>
+        <a href="#"><img src="../assets/github.svg" alt="Github link"/></a>
+      </p>
+    </footer>
   </body>
 </html>

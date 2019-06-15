@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Roboto", sans-serif;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background-color: #673ab7;
+        color: #ffffff;
+        align-items: center;
+        box-shadow: 5px 0 5px #000000;
+        height: 50px;
+        width: 100%;
+        /* position: relative; */
+      }
+
+      header div:first-child {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 220px;
+      }
+
+      header > div:last-child {
+        position: relative;
+        padding-right: 20px;
+      }
+
+      header a {
+        text-decoration: none;
+        color: #ffffff;
+      }
+
+      header img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+      }
+
+      header #sidebarbtn {
+        border: none;
+        background-color: #673ab7;
+        color: #ffffff;
+        font-size: 20px;
+      }
+
+      header h1 {
+        margin: 0;
+        padding: 0;
+        color: #ffffff;
+        font-size: 2rem;
+        font-weight: normal;
+      }
+      header .menu {
+        position: relative;
+        display: inline-block;
+      }
+
+      header .menu button {
+        background: center/99% url("../assets/avatar.jpg") no-repeat;
+        margin: 0;
+        padding: 0;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+      }
+
+      .dropdown {
+        display: none;
+        position: absolute;
+        background-color: #ffffff;
+        border: 1px solid #999999;
+        top: 43px;
+        right: 0;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+
+      .dropdown a {
+        color: #333333;
+        border-top: 1px solid #999999;
+        padding: 10px;
+        display: block;
+      }
+
+      .show {
+        display: block;
+      }
+
+      main {
+        margin: 70px 0;
+      }
+
+      main a {
+        text-decoration: none;
+        color: #333333;
+      }
+
+      main .discussion,
+      main .comment {
+        font-size: 1.2em;
+        border: 1px solid #666666;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 0 10px;
+      }
+
+      main .comment {
+        margin-left: 40px;
+      }
+
+      main section {
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+        padding: 0;
+      }
+
+      main section:first-child {
+        justify-content: start;
+      }
+
+      main section:first-child p {
+        min-width: 80%;
+      }
+
+      main section:last-child {
+        font-size: 0.6em;
+        justify-content: end;
+      }
+
+      main section:last-child p {
+        margin: 5px;
+      }
+
+      .comments,
+      .author,
+      .time {
+        width: 150px;
+      }
+
+      .author {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      main #newDiscussion {
+        background: #673ab7 no-repeat center/60% url("../assets/pencil.svg");
+        width: 50px;
+        height: 50px;
+        position: fixed;
+        bottom: 80px;
+        right: 10px;
+        border-radius: 50%;
+      }
+
+      footer {
+        background-color: #673ab7;
+        color: #ffffff;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      footer p {
+        margin: 0;
+        padding: 5px 0;
+        font-size: 0.8em;
+        line-height: 1.5;
+      }
+
+      footer a {
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      footer p img {
+        height: 20px;
+        margin: 0 5px;
+      }
+
+      .loginView {
+        height: calc(100vh - (50px + 65px));
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+      }
+
+      .login {
+        margin: 0 auto;
+      }
+
+      .login form fieldset {
+        border: none;
+      }
+
+      .loginView form {
+        border: 1px solid #999999;
+        box-shadow: 5px 5px 5px #000000;
+        padding: 40px;
+      }
+
+      form button {
+        /* margin-top: 30px; */
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+    <title>..::DSCUSSME::..</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <button id="sidebarbtn" type="button">&#9776;</button>
+        <h1><a href="#">DSCUSSME</a></h1>
+      </div>
+      <div class="menu">
+        <button id="dropbtn" type="button" onclick="myFunction()">
+          <!-- <img src="../assets/avatar.jpg" alt="user avatar" /> -->
+        </button>
+        <div id="myDropdown" class="dropdown">
+          <a href="#">WWWWWWWWWWWW</a>
+          <a href="#">Logout</a>
+        </div>
+      </div>
+    </header>
+    <main class="loginView">
+      <article class="login">
+        <form action="">
+          <fieldset>
+            <label for="username">Username:</label><br />
+            <input type="text" id="username" />
+          </fieldset>
+          <fieldset>
+            <label for="">Email:</label><br />
+            <input type="email" id="email" />
+          </fieldset>
+          <button type="button">Login</button>
+        </form>
+      </article>
+    </main>
+    <footer>
+      <p>&copy; 2019 DSCUSSME by <a href="#">dscussme development group</a></p>
+      <p>
+        <a href="#"
+          ><img src="../assets/facebook-logo.svg" alt="Facebook link"
+        /></a>
+        <a href="#"><img src="../assets/twitter.svg" alt="twitter link"/></a>
+        <a href="#"><img src="../assets/github.svg" alt="Github link"/></a>
+      </p>
+    </footer>
+    <script src="./dropdown.js"></script>
+  </body>
+</html>

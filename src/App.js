@@ -1,6 +1,11 @@
 import React from "react";
 import Login from "./Login";
 import Discussions from "./Discussions";
+import { Router, Redirect } from "@reach/router";
+import LocalStorage from "./helpers/Localstorage";
+import { UserProvider } from "./contexts/user";
+import { DiscussionProvider } from "./contexts/discussion";
+import Discussion from "./Discussion";
 
 function App() {
   const fakeDiscussions = [
@@ -81,7 +86,7 @@ function App() {
       discussionId: 3
     }
   ];
-
+  const [user, setUser] = React.useState(LocalStorage.existUser());
   const [discussions, setDiscussions] = React.useState(fakeDiscussions);
   const [comments, setComments] = React.useState(fakeComments);
 
@@ -97,11 +102,42 @@ function App() {
     setComments([...comments, child]);
   }
 
+  function updateUser(newUser) {
+    LocalStorage.saveUser(newUser);
+    setUser(newUser);
+  }
+
+  function updateDiscussions(newDiscussion) {
+    LocalStorage.saveDiscussion(discussions.concat(newDiscussion));
+    setDiscussions(discussions.concat(newDiscussion));
+  }
+
   return (
-    <div>
-      {/* <Discussions discussions={discussions} getAllComments={getAllComments} /> */}
-      <Login />
-    </div>
+    <UserProvider user={user} setUser={updateUser}>
+      <DiscussionProvider
+        discussions={discussions}
+        setDiscussions={updateDiscussions}
+      >
+        <Router>
+          {LocalStorage.existUser() ? (
+            <Redirect from="/login" to="/" noThrow />
+          ) : (
+            <Redirect from="/" to="/login" noThrow />
+          )}
+          <Login path="/login" />
+          <Discussions
+            path="/"
+            discussions={discussions}
+            getAllComments={getAllComments}
+          />
+          <Discussion
+            path="/discussion/:id"
+            discussions={discussions}
+            getAllComments={getAllComments}
+          />
+        </Router>
+      </DiscussionProvider>
+    </UserProvider>
   );
 }
 export default App;

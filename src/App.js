@@ -88,10 +88,10 @@ function App() {
   ];
   const [user, setUser] = React.useState(JSON.parse(LocalStorage.existUser()));
   const [discussions, setDiscussions] = React.useState(
-    JSON.parse(LocalStorage.shareDiscussions())
+    JSON.parse(LocalStorage.shareDiscussions()) || fakeDiscussions
   );
   const [comments, setComments] = React.useState(
-    JSON.parse(LocalStorage.shareComments())
+    JSON.parse(LocalStorage.shareComments()) || fakeComments
   );
 
   function getAllComments(id) {

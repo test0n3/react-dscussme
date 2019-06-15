@@ -86,8 +86,10 @@ function App() {
       discussionId: 3
     }
   ];
-  const [user, setUser] = React.useState(LocalStorage.existUser());
-  const [discussions, setDiscussions] = React.useState(fakeDiscussions);
+  const [user, setUser] = React.useState(JSON.parse(LocalStorage.existUser()));
+  const [discussions, setDiscussions] = React.useState(
+    JSON.parse(LocalStorage.shareDiscussions())
+  );
   const [comments, setComments] = React.useState(fakeComments);
 
   function getAllComments(id) {

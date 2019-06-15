@@ -8,8 +8,9 @@ import { useUser } from "./contexts/user";
 function Discussion({ getAllComments, id }) {
   const { discussions, setDiscussions } = useDiscussion();
   const { user } = useUser();
+  console.log(id);
   const discussion = discussions.find(discussion => discussion.id == id);
-
+  console.log(discussion);
   let comments = getAllComments(discussion.id);
 
   return (
@@ -23,7 +24,7 @@ function Discussion({ getAllComments, id }) {
       <h2>Comments</h2>
       <ButtonCreateComment />
       {comments.map(comment => {
-        return <Comment key={comment.id} comment={comment} />;
+        return <Comment key={comment.id} comment={comment} id={id} />;
       })}
       <hr />
     </>

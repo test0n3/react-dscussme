@@ -3,7 +3,8 @@ import React from "react";
 import ButtonCreateComment from "./ButtonCreateComment";
 import { jsx } from "@emotion/core";
 
-function Comment({ comment }) {
+function Comment({ comment, id }) {
+  console.log(id);
   const styledChildComment = {
     marginLeft: "50px"
   };
@@ -17,7 +18,7 @@ function Comment({ comment }) {
       <p>{comment.body}</p>
       <p>{comment.author}</p>
       <p>{comment.date}</p>
-      {!comment.parentId && <ButtonCreateComment />}
+      {!comment.parentId && <ButtonCreateComment id={id} />}
     </div>
   );
 }

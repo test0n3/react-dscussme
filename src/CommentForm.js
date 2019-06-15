@@ -8,24 +8,24 @@ import { useComment } from "./contexts/comment";
 import { useUser } from "./contexts/user";
 import { useDiscussion } from "./contexts/discussion";
 
-function CommentForm({ showDialog, handleDialogOff }) {
+function CommentForm({ showDialog, handleDialogOff, id }) {
   const { setComments } = useComment();
   const { user } = useUser();
   const { discussions } = useDiscussion();
 
-  console.log(discussions);
+  console.log(id);
 
   function handleSubmit(event) {
     event.preventDefault();
     const body = event.target.elements["body-comment"].value;
-
+    console.log(id);
     setComments({
       id: Date.now(),
       date: Date.now(),
       author: JSON.parse(user),
       body: body,
       parentId: null,
-      discussionId: 2
+      discussionId: id
     });
     handleDialogOff();
   }

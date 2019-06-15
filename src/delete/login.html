@@ -203,6 +203,34 @@
         height: 20px;
         margin: 0 5px;
       }
+
+      .loginView {
+        height: calc(100vh - (50px + 65px));
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+      }
+
+      .login {
+        margin: 0 auto;
+      }
+
+      .login form fieldset {
+        border: none;
+      }
+
+      .loginView form {
+        border: 1px solid #999999;
+        box-shadow: 5px 5px 5px #000000;
+        padding: 40px;
+      }
+
+      form button {
+        /* margin-top: 30px; */
+        display: block;
+        margin: 0 auto;
+      }
     </style>
     <title>..::DSCUSSME::..</title>
   </head>
@@ -222,68 +250,20 @@
         </div>
       </div>
     </header>
-    <main>
-      <article class="discussion">
-        <section>
-          <a href="#">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            </p>
-          </a>
-        </section>
-        <section>
-          <p class="comments">Discuss: 5</p>
-          <p class="author">by <a href="#">WWWWWWWWWWWW</a></p>
-          <p class="time">Today, 23:59:59 hrs</p>
-        </section>
+    <main class="loginView">
+      <article class="login">
+        <form action="">
+          <fieldset>
+            <label for="username">Username:</label><br />
+            <input type="text" id="username" />
+          </fieldset>
+          <fieldset>
+            <label for="">Email:</label><br />
+            <input type="email" id="email" />
+          </fieldset>
+          <button type="button">Login</button>
+        </form>
       </article>
-      <!-- <article class="comment">
-        <section>
-          <a href="#">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo
-              quisquam ex omnis sapiente sunt distinctio quidem at quae, nisi
-              labore? Sunt architecto deserunt doloremque earum placeat quidem
-              aliquid quae voluptas?
-            </p>
-          </a>
-        </section>
-        <section>
-          <p class="author">by <a href="#">WWWWWWWWWWWW</a></p>
-          <p class="time">Today, 23:59:59 hrs</p>
-        </section>
-      </article> -->
-      <article class="discussion">
-        <section>
-          <a href="#">
-            <p class="title">
-              Suscipit blanditiis iusto ullam odio vero praesentium autem iste
-              eos, recusandae facilis cum nostrum, eaque laudantium voluptatum
-              cupiditate a ab consequuntur deleniti.
-            </p>
-          </a>
-        </section>
-        <section>
-          <p class="comments">Discuss: 5</p>
-          <p class="author">by <a href="#">WWWWWWWWWWWW</a></p>
-          <p class="time">Yesterday, 23:59:59 hrs</p>
-        </section>
-      </article>
-      <article class="discussion">
-        <section>
-          <a href="#">
-            <p>
-              Debitis ad quisquam facilis totam at corporis.
-            </p>
-          </a>
-        </section>
-        <section>
-          <p class="comments">Discuss: 5</p>
-          <p class="author">by <a href="#">WWWWWWWWWWWW</a></p>
-          <p class="time">September 15th 2017, 23:59:59 hrs</p>
-        </section>
-      </article>
-      <div id="newDiscussion"></div>
     </main>
     <footer>
       <p>&copy; 2019 DSCUSSME by <a href="#">dscussme development group</a></p>

@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login Form on Submit 1`] = `
+<DocumentFragment>
+  <div
+    class="css-5xc5re-Login"
+  >
+    <div
+      class="css-1azgr0o-Login"
+    >
+      <form
+        class="css-c8sm1h-Login"
+      >
+        <label
+          for="user"
+        >
+          Username
+        </label>
+        <input
+          autocomplete="off"
+          class="css-73r5xs-Login"
+          id="user"
+          required=""
+          user="user"
+          value=""
+        />
+        <br />
+        <label
+          for="email"
+        >
+          Email
+        </label>
+        <input
+          autocomplete="off"
+          class="css-73r5xs-Login"
+          id="email"
+          required=""
+          type="email"
+          value=""
+        />
+        <br />
+        <button
+          class="css-b7djqu-Login"
+          type="submit"
+        >
+          Login
+        </button>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

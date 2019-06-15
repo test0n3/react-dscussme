@@ -4,6 +4,8 @@ import Discussions from "./Discussions";
 import { Router, Redirect } from "@reach/router";
 import LocalStorage from "./helpers/Localstorage";
 import { UserProvider } from "./contexts/user";
+import { DiscussionProvider } from "./contexts/discussion";
+import Discussion from "./Discussion";
 
 function App() {
   const fakeDiscussions = [
@@ -84,7 +86,7 @@ function App() {
       discussionId: 3
     }
   ];
-  const [user, setUser] = React.useState();
+  const [user, setUser] = React.useState(LocalStorage.existUser());
   const [discussions, setDiscussions] = React.useState(fakeDiscussions);
   const [comments, setComments] = React.useState(fakeComments);
 
@@ -105,21 +107,36 @@ function App() {
     setUser(newUser);
   }
 
+  function updateDiscussions(newDiscussion) {
+    LocalStorage.saveDiscussion(discussions.concat(newDiscussion));
+    setDiscussions(discussions.concat(newDiscussion));
+  }
+
   return (
     <UserProvider user={user} setUser={updateUser}>
-      <Router>
-        {LocalStorage.existUser() ? (
-          <Redirect from="/login" to="/" noThrow />
-        ) : (
-          <Redirect from="/" to="/login" noThrow />
-        )}
-        <Login path="/login" />
-        <Discussions
-          path="/"
-          discussions={discussions}
-          getAllComments={getAllComments}
-        />
-      </Router>
+      <DiscussionProvider
+        discussions={discussions}
+        setDiscussions={updateDiscussions}
+      >
+        <Router>
+          {LocalStorage.existUser() ? (
+            <Redirect from="/login" to="/" noThrow />
+          ) : (
+            <Redirect from="/" to="/login" noThrow />
+          )}
+          <Login path="/login" />
+          <Discussions
+            path="/"
+            discussions={discussions}
+            getAllComments={getAllComments}
+          />
+          <Discussion
+            path="/discussion/:id"
+            discussions={discussions}
+            getAllComments={getAllComments}
+          />
+        </Router>
+      </DiscussionProvider>
     </UserProvider>
   );
 }

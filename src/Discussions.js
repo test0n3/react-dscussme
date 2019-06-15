@@ -1,5 +1,6 @@
 import React from "react";
 import DiscussionMain from "./DiscussionMain";
+import ButtonCreateDiscussion from "./ButtonCreateDiscussion";
 
 function Discussions({ discussions, getAllComments }) {
   return (
@@ -10,9 +11,11 @@ function Discussions({ discussions, getAllComments }) {
             key={discussion.id}
             discussion={discussion}
             getAllComments={getAllComments}
+            id={discussion.id}
           />
         );
       })}
+      <ButtonCreateDiscussion />
     </>
   );
 }

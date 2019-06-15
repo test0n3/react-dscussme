@@ -3,17 +3,17 @@ import Comment from "./Comment";
 import ButtonCreateComment from "./ButtonCreateComment";
 import { Link } from "@reach/router";
 
-function Discussion({ discussion, getAllComments }) {
+function Discussion({ discussion, getAllComments, id }) {
   let comments = getAllComments(discussion.id);
-
+  console.log(discussion);
   return (
     <>
-      <Link to="/discussion/:title">
+      <Link to={`/discussion/${id}`}>
         <p>{discussion.title}</p>
       </Link>
       <p>{discussion.id}</p>
       <p>{discussion.date}</p>
-      <p>{discussion.author}</p>
+      <p>{discussion.author.username}</p>
       <hr />
     </>
   );

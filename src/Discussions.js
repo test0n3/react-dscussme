@@ -1,12 +1,12 @@
 import React from "react";
-import Discussion from "./Discussion";
+import DiscussionMain from "./DiscussionMain";
 
 function Discussions({ discussions, getAllComments }) {
   return (
     <>
       {discussions.map(discussion => {
         return (
-          <Discussion
+          <DiscussionMain
             key={discussion.id}
             discussion={discussion}
             getAllComments={getAllComments}

@@ -11,7 +11,6 @@ function Discussion({ getAllComments, id }) {
   const discussion = discussions.find(discussion => discussion.id == id);
 
   let comments = getAllComments(discussion.id);
-  console.log("GAA", id);
 
   return (
     <>

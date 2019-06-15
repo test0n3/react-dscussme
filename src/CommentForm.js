@@ -4,10 +4,29 @@ import "@reach/dialog/styles.css";
 import VisuallyHidden from "@reach/visually-hidden";
 import { Dialog, DialogOverlay, DialogContent } from "@reach/dialog";
 import { jsx } from "@emotion/core";
+import { useComment } from "./contexts/comment";
+import { useUser } from "./contexts/user";
+import { useDiscussion } from "./contexts/discussion";
 
 function CommentForm({ showDialog, handleDialogOff }) {
+  const { setComments } = useComment();
+  const { user } = useUser();
+  const { discussions } = useDiscussion();
+
+  console.log(discussions);
+
   function handleSubmit(event) {
     event.preventDefault();
+    const body = event.target.elements["body-comment"].value;
+
+    setComments({
+      id: Date.now(),
+      date: Date.now(),
+      author: JSON.parse(user),
+      body: body,
+      parentId: null,
+      discussionId: 2
+    });
     handleDialogOff();
   }
 

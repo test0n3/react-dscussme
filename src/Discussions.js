@@ -1,18 +1,21 @@
 import React from "react";
-import Discussion from "./Discussion";
+import DiscussionMain from "./DiscussionMain";
+import ButtonCreateDiscussion from "./ButtonCreateDiscussion";
 
 function Discussions({ discussions, getAllComments }) {
   return (
     <>
       {discussions.map(discussion => {
         return (
-          <Discussion
+          <DiscussionMain
             key={discussion.id}
             discussion={discussion}
             getAllComments={getAllComments}
+            id={discussion.id}
           />
         );
       })}
+      <ButtonCreateDiscussion />
     </>
   );
 }

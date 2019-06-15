@@ -2,13 +2,15 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import LocalStorage from "./helpers/Localstorage";
+import { useUser } from "./contexts/user";
 
 const styles = {
   boxShadow: "2px 4px 24px 0 rgba(0, 0, 0, 0.15)"
 };
-function Login({ placeholder, saveUser }) {
+function Login({ placeholder }) {
   const [username, setUsername] = React.useState("");
   const [email, setEmail] = React.useState("");
+  const { setUser } = useUser();
 
   function onChangeInputUser(event) {
     setUsername(event.target.value);
@@ -23,6 +25,7 @@ function Login({ placeholder, saveUser }) {
     console.log(username);
     console.log(email);
     LocalStorage.saveUser({ username, email });
+    setUser({ username, email });
   }
 
   return (
@@ -48,9 +51,6 @@ function Login({ placeholder, saveUser }) {
             fontSize: "18px",
             margin: "auto",
             maxWidth: 400
-            // display: "flex",
-            // flexDirection: "column",
-            // alignItems: "flex-start"
           }}
         >
           <label htmlFor="user">Username</label>

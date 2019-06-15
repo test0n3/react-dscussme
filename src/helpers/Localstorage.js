@@ -1,33 +1,39 @@
 const LocalStorage = {
-  saveUser: userData => {
-    const exist = false;
-    if (!exist) {
-      localStorage.setItem("user", JSON.stringify(userData));
-      console.log("userData saved");
-    } else {
-      console.log("userData exists");
-    }
-    return void 0;
+  existUser: () => {
+    const exist = localStorage.getItem("user");
+    if (exist === null) return false;
+    return exist;
   },
 
-  existUser: () => {
-    return localStorage.getItem("user");
+  saveUser: userData => {
+    localStorage.setItem("user", JSON.stringify(userData));
+    console.log("userData saved");
+    return void 0;
   },
 
   deleteUser: () => {
-    const exist = localStorage.getItem("user");
-    if (!exist) {
-      localStorage.removeItem("user");
-      console.log("Logout");
-    } else {
-      console.log("No user. Already logged out");
-    }
+    localStorage.removeItem("user");
+    console.log("Logout");
     return void 0;
   },
 
-  saveDiscussion: () => {},
+  saveDiscussions: newDiscussions => {
+    localStorage.setItem("discussions", JSON.stringify(newDiscussions));
+    return void 0;
+  },
 
-  shareDiscussion: () => {}
+  shareDiscussions: () => {
+    return localStorage.getItem("discussions");
+  },
+
+  saveComments: newComments => {
+    localStorage.setItem("comments", JSON.stringify(newComments));
+    return void 0;
+  },
+
+  shareComments: () => {
+    return localStorage.getItem("comments");
+  }
 };
 
 export default LocalStorage;

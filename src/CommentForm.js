@@ -22,10 +22,10 @@ function CommentForm({ showDialog, handleDialogOff, id }) {
     setComments({
       id: Date.now(),
       date: Date.now(),
-      author: JSON.parse(user),
+      author: user,
       body: body,
       parentId: null,
-      discussionId: id
+      discussionId: 2
     });
     handleDialogOff();
   }

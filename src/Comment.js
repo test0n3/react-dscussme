@@ -16,7 +16,7 @@ function Comment({ comment, id }) {
   return (
     <div css={comment.parentId ? styledChildComment : styledComment}>
       <p>{comment.body}</p>
-      <p>{comment.author}</p>
+      <p>{comment.author.username}</p>
       <p>{comment.date}</p>
       {!comment.parentId && <ButtonCreateComment id={id} />}
     </div>

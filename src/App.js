@@ -90,7 +90,9 @@ function App() {
   const [discussions, setDiscussions] = React.useState(
     JSON.parse(LocalStorage.shareDiscussions())
   );
-  const [comments, setComments] = React.useState(fakeComments);
+  const [comments, setComments] = React.useState(
+    JSON.parse(LocalStorage.shareComments())
+  );
 
   function getAllComments(id) {
     return comments.filter(comment => comment.discussionId === id);

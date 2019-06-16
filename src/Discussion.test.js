@@ -3,11 +3,12 @@ import { render } from "@testing-library/react";
 import Discussion from "./Discussion";
 import { DiscussionProvider } from "./contexts/discussion";
 import { UserProvider } from "./contexts/user";
+import { CommentProvider } from "./contexts/comment";
 
 test("Discussion component", async () => {
   const getAllComments = () => [];
   const setDiscussions = jest.fn();
-  
+
   const discussions = [
     {
       id: new Date("2019-06-13T21:50:18.315Z").getTime(),
@@ -24,10 +25,12 @@ test("Discussion component", async () => {
       setDiscussions={setDiscussions}
     >
       <UserProvider>
-        <Discussion
-          getAllComments={getAllComments}
-          id={new Date("2019-06-13T21:50:18.315Z").getTime()}
-        />
+        <CommentProvider>
+          <Discussion
+            getAllComments={getAllComments}
+            id={new Date("2019-06-13T21:50:18.315Z").getTime()}
+          />
+        </CommentProvider>
       </UserProvider>
     </DiscussionProvider>
   );

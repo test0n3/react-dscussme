@@ -28,14 +28,18 @@ function CommentForm({ showDialog, handleDialogOff, id, parentId = null }) {
   }
 
   const styledButton = {
-    backgroundColor: "tomato",
-    border: "none",
     cursor: "pointer",
+    color: "#FFFFFF",
+    backgroundColor: "#673ab7",
+    border: "none",
     borderRadius: "50%",
-    width: "calc(1.4em + 1vw)",
-    height: "calc(1.4em + 1vw)",
-    fontSize: "calc(1.4em + 1vw)",
-    alignSelf: "flex-end"
+    width: 30,
+    height: 30,
+    fontSize: "2em",
+    alignSelf: "flex-end",
+    padding: 0,
+    margin: 0,
+    lineHeight: 0
   };
 
   const styledDialogOverlay = {
@@ -58,22 +62,26 @@ function CommentForm({ showDialog, handleDialogOff, id, parentId = null }) {
   };
 
   const styledLabel = {
-    fontSize: "calc(1em + 1vw)"
+    fontSize: "1.5em"
   };
 
   const styledTextArea = {
-    height: "30vh"
+    fontSize: "1.5em",
+    height: "30vh",
+    borderRadius: 6,
+    border: "1px solid #999999"
   };
 
   const styledSubmit = {
-    backgroundColor: "#8eff47",
+    backgroundColor: "#673ab7",
+    color: "#FFFFFF",
     border: "none",
     cursor: "pointer",
-    borderRadius: "15px",
-    fontSize: "calc(1em + 1vw)",
+    borderRadius: "8px",
+    fontSize: "1.5em",
     alignSelf: "center",
     margin: "10px 0",
-    padding: "3%"
+    padding: "10px 20px"
   };
 
   return (

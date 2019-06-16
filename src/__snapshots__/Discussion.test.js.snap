@@ -2,35 +2,56 @@
 
 exports[`Discussion component 1`] = `
 <DocumentFragment>
-  <p>
-    1560462618315
-  </p>
-  <p>
-    2019-06-13T21:50:18.315Z
-  </p>
-  <p />
-  <p>
-    La vida es bella
-  </p>
-  <p>
-    ideas sueltas
-  </p>
-  <hr />
-  <h2>
-    Comments
-  </h2>
-  <button>
-    <div
-      style="border: 0px; height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; position: absolute;"
+  <div
+    class="css-k8t4nn-Discussion"
+  >
+    <article
+      class="css-1r23v7j-Discussion"
     >
-      Create Comment
-    </div>
-    <span
-      aria-hidden="true"
-    >
-      +
-    </span>
-  </button>
-  <hr />
+      <section>
+        <h3>
+          La vida es bella
+        </h3>
+        <p>
+          ideas sueltas
+        </p>
+      </section>
+      <section
+        class="css-jzwca5-Discussion"
+      >
+        <div
+          class="css-pibzdx-Discussion"
+        >
+          <p
+            class="css-tf518i-Discussion"
+          >
+            by 
+          </p>
+          <p
+            class="css-tf518i-Discussion"
+          >
+            6/13/2019, 4:50:18 PM
+          </p>
+        </div>
+        <button
+          class="css-1rr1zl2-ButtonCreateComment"
+        >
+          <div
+            style="border: 0px; height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; position: absolute;"
+          >
+            Create Comment
+          </div>
+          REPLY
+        </button>
+      </section>
+    </article>
+    <article>
+      <h2
+        class="css-1i71n9z-Discussion"
+      >
+        Comments
+      </h2>
+    </article>
+  </div>
 </DocumentFragment>
 `;

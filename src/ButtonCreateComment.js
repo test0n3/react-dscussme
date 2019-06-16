@@ -4,7 +4,7 @@ import { jsx } from "@emotion/core";
 import VisuallyHidden from "@reach/visually-hidden";
 import CommentForm from "./CommentForm";
 
-function ButtonCreateComment({ id }) {
+function ButtonCreateComment({ id, parentId }) {
   const [showDialog, setShowDialog] = React.useState(false);
 
   function handleDialogOff() {
@@ -37,6 +37,7 @@ function ButtonCreateComment({ id }) {
         showDialog={showDialog}
         handleDialogOff={handleDialogOff}
         id={id}
+        parentId={parentId}
       />
     </>
   );

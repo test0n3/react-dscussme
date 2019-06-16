@@ -102,14 +102,6 @@ function App() {
     return comments.filter(comment => comment.discussionId === id);
   }
 
-  function getChildrenComments(id) {
-    return comments.filter(comment => comment.parentId === id);
-  }
-
-  function addChildComment(child) {
-    setComments([...comments, child]);
-  }
-
   function updateUser(newUser) {
     LocalStorage.saveUser(newUser);
     setUser(newUser);

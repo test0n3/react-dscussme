@@ -11,7 +11,16 @@ function Discussion({ getAllComments, id }) {
   const { discussions, setDiscussions } = useDiscussion();
   const { user } = useUser();
   const discussion = discussions.find(discussion => discussion.id == id);
-  let comments = getAllComments(discussion.id);
+  let comments = getAllComments(discussion.id).filter(
+    comment => comment.parentId == null
+  );
+
+  function getChildrenComments(id) {
+    return getAllComments(discussion.id).filter(
+      comment => comment.parentId === id
+    );
+  }
+
   const discussionStyle = {
     fontSize: "1.2em",
     border: "1px solid #666666",
@@ -51,7 +60,13 @@ function Discussion({ getAllComments, id }) {
         <h2 css={{ marginLeft: 40 }}>Comments</h2>
         {comments.map(comment => {
           return (
-            <Comment key={comment.id} comment={comment} id={discussion.id} />
+            <Comment
+              key={comment.id}
+              comment={comment}
+              id={discussion.id}
+              getAllComments={getAllComments(discussion.id)}
+              children={getChildrenComments(comment.id)}
+            />
           );
         })}
       </article>

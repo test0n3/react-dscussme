@@ -8,7 +8,7 @@ import { useComment } from "./contexts/comment";
 import { useUser } from "./contexts/user";
 import { useDiscussion } from "./contexts/discussion";
 
-function CommentForm({ showDialog, handleDialogOff, id }) {
+function CommentForm({ showDialog, handleDialogOff, id, parentId = null }) {
   const { setComments } = useComment();
   const { user } = useUser();
   const { discussions } = useDiscussion();
@@ -21,7 +21,7 @@ function CommentForm({ showDialog, handleDialogOff, id }) {
       date: Date.now(),
       author: user,
       body: body,
-      parentId: null,
+      parentId: parentId,
       discussionId: id
     });
     handleDialogOff();

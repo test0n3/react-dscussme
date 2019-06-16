@@ -2,14 +2,21 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { Router, Link } from "@reach/router";
+import { useUser } from "./contexts/user";
 
 import LocalStorage from "./helpers/Localstorage";
 
 function Header() {
+  const { setUser } = useUser();
   const LinkStyle = {
     textDecoration: "none",
     color: "#FFFFFF"
   };
+
+  function logout() {
+    setUser(null);
+    LocalStorage.deleteUser();
+  }
 
   return (
     <header
@@ -62,69 +69,33 @@ function Header() {
           </Link>
         </h1>
       </div>
-      (LocalStorage.existUser() &&{" "}
-      <div
-        className="menu"
-        css={{
-          position: "relative",
-          paddingRight: 20,
-          display: "inline-block"
-        }}
-      >
-        <button
-          id="dropbtn"
-          type="button"
-          onclick="myFunction()"
-          css={{
-            background: "center/99% url('../assets/avatar.jpg') no-repeat",
-            margin: 0,
-            padding: 0,
-            border: "none",
-            borderRadius: "50%",
-            width: 30,
-            height: 30
-          }}
-        />
+      {LocalStorage.existUser() && (
         <div
-          id="myDropdown"
-          class="dropdown"
+          className="menu"
           css={{
-            display: "none",
-            position: "absolute",
-            backgroundColor: "#ffffff",
-            border: "1px solid #999999",
-            top: 43,
-            right: 0,
-            boxShadow: "0px 8px 16px 0px rgba(0, 0, 0, 0.2)",
-            zIndex: 1
+            position: "relative",
+            paddingRight: 20,
+            display: "inline-block"
           }}
         >
-          <a
+          <button
+            type="button"
+            onClick={logout}
             css={{
-              textDecoration: "none",
-              color: "#333333",
-              borderTop: "1px solid #999999",
-              padding: 10,
-              display: "block"
+              display: "block",
+              backgroundColor: "#FFFFFF",
+              color: "#673ab7",
+              border: "none",
+              borderRadius: 5,
+              padding: "10px 20px",
+              fontWeight: "bold",
+              cursor: "pointer"
             }}
-          >
-            {LocalStorage.existUser()}
-          </a>
-          <a
-            css={{
-              textDecoration: "none",
-              color: "#333333",
-              borderTop: "1px solid #999999",
-              padding: 10,
-              display: "block"
-            }}
-            onclick={LocalStorage.deleteUser()}
           >
             Logout
-          </a>
+          </button>
         </div>
-      </div>
-      )
+      )}
     </header>
   );
 }

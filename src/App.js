@@ -7,12 +7,15 @@ import { UserProvider } from "./contexts/user";
 import { DiscussionProvider } from "./contexts/discussion";
 import Discussion from "./Discussion";
 
+import Header from "./Header";
+import Footer from "./Footer";
+
 function App() {
   const fakeDiscussions = [
     {
       id: 1,
       date: "2019-06-13, 09:58 AM",
-      author: "test1",
+      author: { username: "test1", email: "test1@email.com" },
       title: "This is the first fake title create by some pompous jerk",
       body:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia eius ullam ex, dolores, molestias qui ipsum quibusdam consequuntur quam natus fugiat minus quae earum ad architecto similique debitis ut voluptates!"
@@ -20,7 +23,7 @@ function App() {
     {
       id: 2,
       date: "2019-06-13, 10:58 AM",
-      author: "DonKatze",
+      author: { username: "DonKatze", email: "DonKatze@email.com" },
       title: "Vamos a jugar Flechitas",
       body:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia eius ullam ex, dolores, molestias qui ipsum quibusdam consequuntur quam natus fugiat minus quae earum ad architecto similique debitis ut voluptates!"
@@ -28,7 +31,7 @@ function App() {
     {
       id: 3,
       date: "2019-06-13, 10:58 AM",
-      author: "manKicker",
+      author: { username: "manKicker", email: "manKicker@email.com" },
       title: "Lorem ipsum dolor sit amet",
       body:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia eius ullam ex, dolores, molestias qui ipsum quibusdam consequuntur quam natus fugiat minus quae earum ad architecto similique debitis ut voluptates!"
@@ -39,7 +42,7 @@ function App() {
     {
       id: 2,
       date: "2019-06-13, 10:00 AM",
-      author: "test1",
+      author: { username: "test1", email: "test1@email.com" },
       body:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia eius ullam ex, dolores, molestias qui ipsum quibusdam consequuntur quam natus fugiat minus quae earum ad architecto similique debitis ut voluptates!",
       parentId: null,
@@ -48,7 +51,7 @@ function App() {
     {
       id: 3,
       date: "2019-06-13, 11:00 AM",
-      author: "Duke",
+      author: { username: "Duke", email: "Duke@email.com" },
       body: "Kill Lian, Kill Lian",
       parentId: 2,
       discussionId: 1
@@ -56,7 +59,7 @@ function App() {
     {
       id: 5,
       date: "2019-06-13, 11:00 AM",
-      author: "diegoC",
+      author: { username: "diegoC", email: "diegoC@email.com" },
       body: "No sapbeee, a jugar PES",
       parentId: null,
       discussionId: 2
@@ -64,7 +67,7 @@ function App() {
     {
       id: 6,
       date: "2019-06-13, 11:02 AM",
-      author: "manKicker",
+      author: { username: "manKicker", email: "manKicker@email.com" },
       body: "Ordenan la sala después de terminar de jugar",
       parentId: 5,
       discussionId: 2
@@ -72,7 +75,7 @@ function App() {
     {
       id: 8,
       date: "2019-06-13, 11:00 AM",
-      author: "diegoC",
+      author: { username: "diegoC", email: "diegoC@email.com" },
       body: "No entiendo, ¿es freestyle?",
       parentId: null,
       discussionId: 3
@@ -80,7 +83,7 @@ function App() {
     {
       id: 9,
       date: "2019-06-13, 11:02 AM",
-      author: "mancito",
+      author: { username: "mancito", email: "mancito@email.com" },
       body: "Bebecita~~~~ PRRRRRRR",
       parentId: 8,
       discussionId: 3
@@ -108,36 +111,40 @@ function App() {
   }
 
   function updateDiscussions(newDiscussion) {
-    LocalStorage.saveDiscussion(discussions.concat(newDiscussion));
+    LocalStorage.saveDiscussions(discussions.concat(newDiscussion));
     setDiscussions(discussions.concat(newDiscussion));
   }
 
   return (
-    <UserProvider user={user} setUser={updateUser}>
-      <DiscussionProvider
-        discussions={discussions}
-        setDiscussions={updateDiscussions}
-      >
-        <Router>
-          {LocalStorage.existUser() ? (
-            <Redirect from="/login" to="/" noThrow />
-          ) : (
-            <Redirect from="/" to="/login" noThrow />
-          )}
-          <Login path="/login" />
-          <Discussions
-            path="/"
-            discussions={discussions}
-            getAllComments={getAllComments}
-          />
-          <Discussion
-            path="/discussion/:id"
-            discussions={discussions}
-            getAllComments={getAllComments}
-          />
-        </Router>
-      </DiscussionProvider>
-    </UserProvider>
+    <>
+      <UserProvider user={user} setUser={updateUser}>
+        <Header />
+        <DiscussionProvider
+          discussions={discussions}
+          setDiscussions={updateDiscussions}
+        >
+          <Router>
+            {LocalStorage.existUser() ? (
+              <Redirect from="/login" to="/" noThrow />
+            ) : (
+              <Redirect from="/" to="/login" noThrow />
+            )}
+            <Login path="/login" />
+            <Discussions
+              path="/"
+              discussions={discussions}
+              getAllComments={getAllComments}
+            />
+            <Discussion
+              path="/discussion/:id"
+              discussions={discussions}
+              getAllComments={getAllComments}
+            />
+          </Router>
+        </DiscussionProvider>
+      </UserProvider>
+      <Footer />
+    </>
   );
 }
 export default App;

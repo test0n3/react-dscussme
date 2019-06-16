@@ -9,9 +9,7 @@ function Discussion({ getAllComments, id }) {
   const { discussions, setDiscussions } = useDiscussion();
   const { user } = useUser();
   const discussion = discussions.find(discussion => discussion.id == id);
-
   let comments = getAllComments(discussion.id);
-  console.log("GAA", id);
 
   return (
     <>
@@ -22,9 +20,11 @@ function Discussion({ getAllComments, id }) {
       <p>{discussion.body}</p>
       <hr />
       <h2>Comments</h2>
-      <ButtonCreateComment />
+      <ButtonCreateComment id={discussion.id} />
       {comments.map(comment => {
-        return <Comment key={comment.id} comment={comment} />;
+        return (
+          <Comment key={comment.id} comment={comment} id={discussion.id} />
+        );
       })}
       <hr />
     </>

@@ -6,7 +6,7 @@ import LocalStorage from "./helpers/Localstorage";
 import { UserProvider } from "./contexts/user";
 import { DiscussionProvider } from "./contexts/discussion";
 import Discussion from "./Discussion";
-
+import { CommentProvider } from "./contexts/comment";
 function App() {
   const fakeDiscussions = [
     {
@@ -86,9 +86,13 @@ function App() {
       discussionId: 3
     }
   ];
-  const [user, setUser] = React.useState(LocalStorage.existUser());
-  const [discussions, setDiscussions] = React.useState(fakeDiscussions);
-  const [comments, setComments] = React.useState(fakeComments);
+  const [user, setUser] = React.useState(JSON.parse(LocalStorage.existUser()));
+  const [discussions, setDiscussions] = React.useState(
+    JSON.parse(LocalStorage.shareDiscussions()) || fakeDiscussions
+  );
+  const [comments, setComments] = React.useState(
+    JSON.parse(LocalStorage.shareComments()) || fakeComments
+  );
 
   function getAllComments(id) {
     return comments.filter(comment => comment.discussionId === id);
@@ -108,34 +112,39 @@ function App() {
   }
 
   function updateDiscussions(newDiscussion) {
-    LocalStorage.saveDiscussion(discussions.concat(newDiscussion));
+    LocalStorage.saveDiscussions(discussions.concat(newDiscussion));
     setDiscussions(discussions.concat(newDiscussion));
   }
-
+  function updateComments(newComment) {
+    LocalStorage.saveComments(comments.concat(newComment));
+    setComments(comments.concat(newComment));
+  }
   return (
     <UserProvider user={user} setUser={updateUser}>
       <DiscussionProvider
         discussions={discussions}
         setDiscussions={updateDiscussions}
       >
-        <Router>
-          {LocalStorage.existUser() ? (
-            <Redirect from="/login" to="/" noThrow />
-          ) : (
-            <Redirect from="/" to="/login" noThrow />
-          )}
-          <Login path="/login" />
-          <Discussions
-            path="/"
-            discussions={discussions}
-            getAllComments={getAllComments}
-          />
-          <Discussion
-            path="/discussion/:id"
-            discussions={discussions}
-            getAllComments={getAllComments}
-          />
-        </Router>
+        <CommentProvider comments={comments} setComments={updateComments}>
+          <Router>
+            {LocalStorage.existUser() ? (
+              <Redirect from="/login" to="/" noThrow />
+            ) : (
+              <Redirect from="/" to="/login" noThrow />
+            )}
+            <Login path="/login" />
+            <Discussions
+              path="/"
+              discussions={discussions}
+              getAllComments={getAllComments}
+            />
+            <Discussion
+              path="/discussion/:id"
+              discussions={discussions}
+              getAllComments={getAllComments}
+            />
+          </Router>
+        </CommentProvider>
       </DiscussionProvider>
     </UserProvider>
   );

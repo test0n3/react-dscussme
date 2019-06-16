@@ -5,7 +5,6 @@ import { Link } from "@reach/router";
 
 function Discussion({ discussion, getAllComments, id }) {
   let comments = getAllComments(discussion.id);
-  console.log(discussion);
   return (
     <>
       <Link to={`/discussion/${id}`}>

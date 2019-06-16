@@ -2,7 +2,7 @@ import React from "react";
 import VisuallyHidden from "@reach/visually-hidden";
 import CommentForm from "./CommentForm";
 
-function ButtonCreateComment() {
+function ButtonCreateComment({ id }) {
   const [showDialog, setShowDialog] = React.useState(false);
 
   function handleDialogOff() {
@@ -19,7 +19,11 @@ function ButtonCreateComment() {
         <VisuallyHidden>Create Comment</VisuallyHidden>
         <span aria-hidden>+</span>
       </button>
-      <CommentForm showDialog={showDialog} handleDialogOff={handleDialogOff} />
+      <CommentForm
+        showDialog={showDialog}
+        handleDialogOff={handleDialogOff}
+        id={id}
+      />
     </>
   );
 }

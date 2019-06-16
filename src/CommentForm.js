@@ -13,19 +13,16 @@ function CommentForm({ showDialog, handleDialogOff, id }) {
   const { user } = useUser();
   const { discussions } = useDiscussion();
 
-  console.log(id);
-
   function handleSubmit(event) {
     event.preventDefault();
     const body = event.target.elements["body-comment"].value;
-    console.log(id);
     setComments({
       id: Date.now(),
       date: Date.now(),
       author: user,
       body: body,
       parentId: null,
-      discussionId: 2
+      discussionId: id
     });
     handleDialogOff();
   }

@@ -4,7 +4,6 @@ import ButtonCreateComment from "./ButtonCreateComment";
 import { jsx } from "@emotion/core";
 
 function Comment({ comment, id }) {
-  console.log(id);
   const styledChildComment = {
     marginLeft: "50px"
   };

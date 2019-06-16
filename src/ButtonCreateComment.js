@@ -4,7 +4,6 @@ import CommentForm from "./CommentForm";
 
 function ButtonCreateComment({ id }) {
   const [showDialog, setShowDialog] = React.useState(false);
-  console.log(id);
 
   function handleDialogOff() {
     setShowDialog(false);

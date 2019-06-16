@@ -36,7 +36,15 @@ function Comment({ comment, id }) {
             fontSize: "0.6em"
           }}
         >
-          <div css={{ display: "flex", flexDirection: "row" }}>
+          <div
+            css={{
+              display: "flex",
+              flexDirection: "row",
+              "@media (max-width: 480px)": {
+                display: "block"
+              }
+            }}
+          >
             <p
               css={{
                 width: 150,
@@ -48,7 +56,9 @@ function Comment({ comment, id }) {
             >
               by {comment.author.username}
             </p>
-            <p css={{ width: 150, margin: 5 }}>{comment.date}</p>
+            <p css={{ width: 150, margin: 5 }}>
+              {new Date(comment.date).toLocaleString()}
+            </p>
           </div>
           {!comment.parentId && <ButtonCreateComment id={id} />}
         </section>

@@ -6,6 +6,7 @@ import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 import { useDiscussion } from "./contexts/discussion";
 import { useUser } from "./contexts/user";
+import { inherits } from "util";
 
 function Discussion({ getAllComments, id }) {
   const { discussions, setDiscussions } = useDiscussion();
@@ -37,7 +38,15 @@ function Discussion({ getAllComments, id }) {
             justifyContent: "space-between"
           }}
         >
-          <div css={{ display: "flex", flexDirection: "row" }}>
+          <div
+            css={{
+              display: "flex",
+              flexDirection: "row",
+              "@media (max-width: 480px)": {
+                display: "block"
+              }
+            }}
+          >
             <p css={{ margin: 5 }}>by {discussion.author.username}</p>
             <p css={{ margin: 5 }}>
               {new Date(discussion.date).toLocaleString()}
@@ -46,7 +55,6 @@ function Discussion({ getAllComments, id }) {
           <ButtonCreateComment id={discussion.id} />
         </section>
       </article>
-      {/* <p>{discussion.id}</p> */}
       <article>
         <h2 css={{ marginLeft: 40 }}>Comments</h2>
         {comments.map(comment => {

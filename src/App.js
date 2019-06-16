@@ -15,7 +15,7 @@ function App() {
   const fakeDiscussions = [
     {
       id: 1,
-      date: "2019-06-13, 09:58 AM",
+      date: 1560048227330,
       author: { username: "test1", email: "test1@email.com" },
       title: "This is the first fake title create by some pompous jerk",
       body:
@@ -23,7 +23,7 @@ function App() {
     },
     {
       id: 2,
-      date: "2019-06-13, 10:58 AM",
+      date: 1560148227330,
       author: { username: "DonKatze", email: "DonKatze@email.com" },
       title: "Vamos a jugar Flechitas",
       body:
@@ -31,7 +31,7 @@ function App() {
     },
     {
       id: 3,
-      date: "2019-06-13, 10:58 AM",
+      date: 1560655227330,
       author: { username: "manKicker", email: "manKicker@email.com" },
       title: "Lorem ipsum dolor sit amet",
       body:
@@ -42,7 +42,7 @@ function App() {
   const fakeComments = [
     {
       id: 2,
-      date: "2019-06-13, 10:00 AM",
+      date: 1560633327330,
       author: { username: "test1", email: "test1@email.com" },
       body:
         "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quia eius ullam ex, dolores, molestias qui ipsum quibusdam consequuntur quam natus fugiat minus quae earum ad architecto similique debitis ut voluptates!",
@@ -51,7 +51,7 @@ function App() {
     },
     {
       id: 3,
-      date: "2019-06-13, 11:00 AM",
+      date: 1560333227330,
       author: { username: "Duke", email: "Duke@email.com" },
       body: "Kill Lian, Kill Lian",
       parentId: 2,
@@ -59,7 +59,7 @@ function App() {
     },
     {
       id: 5,
-      date: "2019-06-13, 11:00 AM",
+      date: 1563338227330,
       author: { username: "diegoC", email: "diegoC@email.com" },
       body: "No sapbeee, a jugar PES",
       parentId: null,
@@ -67,7 +67,7 @@ function App() {
     },
     {
       id: 6,
-      date: "2019-06-13, 11:02 AM",
+      date: 1560666227330,
       author: { username: "manKicker", email: "manKicker@email.com" },
       body: "Ordenan la sala después de terminar de jugar",
       parentId: 5,
@@ -75,7 +75,7 @@ function App() {
     },
     {
       id: 8,
-      date: "2019-06-13, 11:00 AM",
+      date: 1560666227330,
       author: { username: "diegoC", email: "diegoC@email.com" },
       body: "No entiendo, ¿es freestyle?",
       parentId: null,
@@ -83,7 +83,7 @@ function App() {
     },
     {
       id: 9,
-      date: "2019-06-13, 11:02 AM",
+      date: 1560111127330,
       author: { username: "mancito", email: "mancito@email.com" },
       body: "Bebecita~~~~ PRRRRRRR",
       parentId: 8,

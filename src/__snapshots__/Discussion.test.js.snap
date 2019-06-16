@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Discussion component 1`] = `
+<DocumentFragment>
+  <p>
+    1560462618315
+  </p>
+  <p>
+    2019-06-13T21:50:18.315Z
+  </p>
+  <p />
+  <p>
+    La vida es bella
+  </p>
+  <p>
+    ideas sueltas
+  </p>
+  <hr />
+  <h2>
+    Comments
+  </h2>
+  <button>
+    <div
+      style="border: 0px; height: 1px; width: 1px; margin: -1px; padding: 0px; overflow: hidden; position: absolute;"
+    >
+      Create Comment
+    </div>
+    <span
+      aria-hidden="true"
+    >
+      +
+    </span>
+  </button>
+  <hr />
+</DocumentFragment>
+`;

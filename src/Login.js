@@ -29,63 +29,79 @@ function Login({ placeholder }) {
   }
 
   return (
-    <div
-      css={{
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-        display: "flex"
-      }}
-    >
-      <div css={{ width: "100%" }}>
-        <form
-          onSubmit={handleSubmit}
-          css={{
-            ...styles,
-            backgroundColor: "#fff",
-            width: "100%",
-            padding: "24px",
-            borderRadius: "8px",
-            color: "#000",
-            boxSizing: "border-box",
-            fontSize: "18px",
-            margin: "auto",
-            maxWidth: 400
-          }}
-        >
-          <label htmlFor="user">Username</label>
-          <input
-            css={{ ...styles }}
-            id="user"
-            required="required"
-            autoComplete="off"
-            user="user"
-            placeholder={placeholder}
-            onChange={onChangeInputUser}
-            value={username}
-          />
-          <br />
-          <label htmlFor="email">Email</label>
-          <input
-            css={{ ...styles }}
-            id="email"
-            required="required"
-            autoComplete="off"
-            type="email"
-            placeholder={placeholder}
-            onChange={onChangeInputEmail}
-            value={email}
-          />
-          <br />
-          <button
-            css={{ ...styles, marginTop: 30, alignSelf: "flex-end" }}
-            type="submit"
+    <>
+      {/* <Header /> */}
+      <article
+        css={{
+          height: "calc(100vh - (50px + 65px))",
+          display: "flex",
+          flexDirection: "column",
+          alignContent: "center",
+          justifyContent: "center"
+        }}
+      >
+        <section css={{ margin: "0 auto" }}>
+          <form
+            onSubmit={handleSubmit}
+            css={{
+              ...styles,
+              backgroundColor: "#fff",
+
+              padding: "40px",
+              borderRadius: "8px",
+              color: "#000",
+              fontSize: "18px"
+            }}
           >
-            Login
-          </button>
-        </form>
-      </div>
-    </div>
+            <fieldset css={{ border: "none" }}>
+              <label htmlFor="user">Username</label>
+              <br />
+              <input
+                css={{ ...styles }}
+                id="user"
+                required="required"
+                autoComplete="off"
+                user="user"
+                placeholder={placeholder}
+                onChange={onChangeInputUser}
+                value={username}
+              />
+            </fieldset>
+            <fieldset css={{ border: "none" }}>
+              <label htmlFor="email">Email</label>
+              <br />
+              <input
+                css={{ ...styles }}
+                id="email"
+                required="required"
+                autoComplete="off"
+                type="email"
+                placeholder={placeholder}
+                onChange={onChangeInputEmail}
+                value={email}
+              />
+            </fieldset>
+            <button
+              css={{
+                ...styles,
+                display: "block",
+                margin: "20px auto 0",
+                backgroundColor: "#673ab7",
+                color: "#FFFFFF",
+                border: "none",
+                borderRadius: 5,
+                padding: "10px 20px",
+                fontWeight: "bold"
+              }}
+              type="submit"
+            >
+              Login
+            </button>
+          </form>
+        </section>
+      </article>
+      {/* <Footer /> */}
+    </>
   );
 }
 

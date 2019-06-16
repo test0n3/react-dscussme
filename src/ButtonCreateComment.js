@@ -1,4 +1,6 @@
+/** @jsx jsx */
 import React from "react";
+import { jsx } from "@emotion/core";
 import VisuallyHidden from "@reach/visually-hidden";
 import CommentForm from "./CommentForm";
 
@@ -15,9 +17,21 @@ function ButtonCreateComment({ id }) {
 
   return (
     <>
-      <button onClick={handleDialogOn}>
+      <button
+        onClick={handleDialogOn}
+        css={{
+          border: "none",
+          borderRadius: 5,
+          padding: "10px 20px",
+          fontWeight: "bold",
+          backgroundColor: "#673ab7",
+          color: "#FFFFFF",
+          cursor: "pointer",
+          marginBottom: 5
+        }}
+      >
         <VisuallyHidden>Create Comment</VisuallyHidden>
-        <span aria-hidden>+</span>
+        REPLY
       </button>
       <CommentForm
         showDialog={showDialog}

@@ -3,7 +3,7 @@ import React from "react";
 import ButtonCreateComment from "./ButtonCreateComment";
 import { jsx } from "@emotion/core";
 
-function Comment({ comment }) {
+function Comment({ comment, id }) {
   const discussionStyle = {
     fontSize: "1.2em",
     border: "1px solid #666666",
@@ -50,7 +50,7 @@ function Comment({ comment }) {
             </p>
             <p css={{ width: 150, margin: 5 }}>{comment.date}</p>
           </div>
-          {!comment.parentId && <ButtonCreateComment />}
+          {!comment.parentId && <ButtonCreateComment id={id} />}
         </section>
       </div>
     </div>

@@ -18,7 +18,7 @@ function DiscussionForm({ showDialog, handleDialogOff }) {
     setDiscussions({
       id: Date.now(),
       date: Date.now(),
-      author: JSON.parse(user),
+      author: user,
       title: title,
       body: body
     });

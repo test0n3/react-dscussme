@@ -8,7 +8,6 @@ import { hidden } from "ansi-colors";
 
 function Discussion({ discussion, getAllComments, id }) {
   let comments = getAllComments(discussion.id);
-  console.log(discussion);
   return (
     <>
       <article
@@ -57,7 +56,7 @@ function Discussion({ discussion, getAllComments, id }) {
             by {discussion.author.username}
           </p>
           <p className="time" css={{ margin: 5, width: 150 }}>
-            {discussion.date}
+            {new Date(discussion.date).toLocaleString()}
           </p>
         </section>
       </article>

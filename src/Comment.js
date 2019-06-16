@@ -1,9 +1,9 @@
 /** @jsx jsx */
-import React from "react";
 import ButtonCreateComment from "./ButtonCreateComment";
 import { jsx } from "@emotion/core";
 
-function Comment({ comment, id }) {
+function Comment({ comment, id, children, getAllComments }) {
+  const childrenComments = children;
   const discussionStyle = {
     fontSize: "1.2em",
     border: "1px solid #666666",
@@ -60,9 +60,22 @@ function Comment({ comment, id }) {
               {new Date(comment.date).toLocaleString()}
             </p>
           </div>
-          {!comment.parentId && <ButtonCreateComment id={id} />}
+          {!comment.parentId && (
+            <ButtonCreateComment id={id} parentId={comment.id} />
+          )}
         </section>
       </div>
+      {childrenComments.map(comment => {
+        return (
+          <Comment
+            key={comment.id}
+            comment={comment}
+            id={comment.discussionId}
+            children={[]}
+            getAllChildren={[]}
+          />
+        );
+      })}
     </div>
   );
 }

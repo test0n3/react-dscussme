@@ -2,51 +2,61 @@
 
 exports[`Login Form on Submit 1`] = `
 <DocumentFragment>
-  <div
-    class="css-5xc5re-Login"
+  <article
+    class="css-k64h8a-Login"
   >
-    <div
-      class="css-1azgr0o-Login"
+    <section
+      class="css-bs9a00-Login"
     >
       <form
-        class="css-c8sm1h-Login"
+        class="css-gqlw54-Login"
       >
-        <label
-          for="user"
+        <fieldset
+          class="css-5pqgv6-Login"
         >
-          Username
-        </label>
-        <input
-          autocomplete="off"
-          class="css-73r5xs-Login"
-          id="user"
-          required=""
-          user="user"
-          value=""
-        />
-        <br />
-        <label
-          for="email"
+          <label
+            for="user"
+          >
+            Username
+          </label>
+          <br />
+          <input
+            autocomplete="off"
+            class="css-73r5xs-Login"
+            id="user"
+            placeholder="write login"
+            required=""
+            user="user"
+            value=""
+          />
+        </fieldset>
+        <fieldset
+          class="css-5pqgv6-Login"
         >
-          Email
-        </label>
-        <input
-          autocomplete="off"
-          class="css-73r5xs-Login"
-          id="email"
-          required=""
-          type="email"
-          value=""
-        />
-        <br />
+          <label
+            for="email"
+          >
+            Email
+          </label>
+          <br />
+          <input
+            autocomplete="off"
+            class="css-73r5xs-Login"
+            id="email"
+            placeholder="write login"
+            required=""
+            type="email"
+            value=""
+          />
+        </fieldset>
         <button
-          class="css-b7djqu-Login"
+          class="css-12i28cd-Login"
           type="submit"
         >
           Login
         </button>
       </form>
-    </div>
-  </div>
+    </section>
+  </article>
 </DocumentFragment>
 `;
